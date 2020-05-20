@@ -35,7 +35,7 @@ const InstructionPopper = forwardRef(({ onSuccess, onFail }, ref) => {
     { code: "click", message: "Clic", color: GREEN, timeout: calcRandomTimer() },
     { code: "number", message: "Chiffre", color: BLUE, timeout: calcRandomTimer() },
     { code: "space", message: "Espace", color: LIGHT_YELLOW, timeout: calcRandomTimer() },
-    { code: "speak", message: "Chante", color: PINK, timeout: calcRandomTimer() },
+    { code: "nothing", message: "Rien", color: PINK, timeout: calcRandomTimer() },
     { code: "shake", message: "Secoue", color: YELLOW, timeout: calcRandomTimer() },
   ];
 
@@ -51,8 +51,8 @@ const InstructionPopper = forwardRef(({ onSuccess, onFail }, ref) => {
     );
   };
 
-  const successInput = () => {
-    onSuccess(new Date() - lastRenderTime);
+  const successInput = (code) => {
+    onSuccess(code, new Date() - lastRenderTime);
   };
 
   const instruction = instructions[index];

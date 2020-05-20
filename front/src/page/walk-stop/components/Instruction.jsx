@@ -14,11 +14,18 @@ const Instruction = forwardRef(({ message, code, color, successInput, onFail }, 
   useImperativeHandle(ref, () => ({
     handleInput(inputType) {
       // console.debug(code, inputType, code === inputType);
+      if (visible && code === "nothing") {
+        setVisible(false);
+        success = true;
+        onFail(code);
+        return;
+      }
+
       if (visible && code === inputType) {
         setVisible(false);
         // setSuccess(true);
         success = true;
-        successInput();
+        successInput(code);
       }
     }
   }));
@@ -26,8 +33,13 @@ const Instruction = forwardRef(({ message, code, color, successInput, onFail }, 
   useEffect(() => {
     setTimeout(() => {
       if (!success && visible) {
-        setVisible(false);
-        onFail();
+        if (code === "nothing") {
+          setVisible(false);
+          successInput(code);
+        } else {
+          setVisible(false);
+          onFail(code);
+        }
       }
     }, 1000);
   }, [ code ]);
