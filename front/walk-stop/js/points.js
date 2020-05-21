@@ -1,10 +1,15 @@
 let SCORE = 0;
+let ALL_SCORES = [
+  { pseudo: "Toto", score: 5432 },
+  { pseudo: "Titi", score: 4321 },
+  { pseudo: "Tutu", score: 3210 },
+];
 
 const scorePoints = points => {
   const id = randomId();
   createScoreDiv(id, points);
 
-  SCORE += points;
+  SCORE = Math.max(0, SCORE + points);
   updateScore();
 
   setTimeout(() => {
@@ -28,13 +33,21 @@ const createScoreDiv = (id, points) => {
 };
 
 const updateScore = () => {
-  let html = '<span id="score-points__leading_zeros">';
-  if (SCORE < 10000) { html += "0"; }
-  if (SCORE < 1000) { html += "0"; }
-  if (SCORE < 100) { html += "0"; }
-  if (SCORE < 10) { html += "0"; }
-  html += "</span>" + SCORE;
-
-  document.getElementById("score-points").innerHTML = html;
+  document.getElementById("score-points").innerHTML = getHTMLScore(SCORE);
+};
+const getHTMLScore = score => {
+  let html = '<span class="score-leading-zeros">';
+  if (score < 10000) { html += "0"; }
+  if (score < 1000) { html += "0"; }
+  if (score < 100) { html += "0"; }
+  if (score < 10) { html += "0"; }
+  html += "</span>" + score;
+  return html;
 };
 updateScore();
+
+const updateLeaderBoard = () => {
+  document.querySelector("#leaderboard ul").innerHTML =
+    ALL_SCORES.map(s => `<li>${ s.pseudo } &nbsp;&nbsp;&nbsp;&nbsp;${ getHTMLScore(s.score) }</li>`).join("");
+};
+updateLeaderBoard();

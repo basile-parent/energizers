@@ -1,7 +1,7 @@
 .score-popup {
     position: absolute;
-    top: calc(50% - 150px);
-    right: 10%;
+    top: calc(50% - 200px);
+    right: 30%;
     font-size: 80px;
     font-family: arcade, neon, serif;
 
