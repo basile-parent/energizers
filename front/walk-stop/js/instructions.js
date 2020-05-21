@@ -59,8 +59,6 @@ const runInstruction = (index) => {
   );
 };
 
-runInstruction(0);
-
 const handleInput = input => {
   if (!CURRENT_INSTRUCTION || !CURRENT_INSTRUCTION.showed || CURRENT_INSTRUCTION.terminated) {
     return;
@@ -83,7 +81,7 @@ const handleInput = input => {
   }
 };
 
-const endInstructionTimeout = points => {
+const endInstructionTimeout = () => {
   if (CURRENT_INSTRUCTION.code === "nothing" && !CURRENT_INSTRUCTION.terminated) {
     const points = INSTRUCTION_INPUT_PROPERTIES.maxPoints;
     console.log(`Success +${points} points`);
@@ -142,4 +140,7 @@ const updateLexique = rules => {
     rules.allRules.map(r => `<li><span class="lexique__${r.color}">${r.label}</span>${r.replacementLabel ? ` 🡆 <span class="lexique__${r.replacementColor}">${r.replacementLabel}</span>` : ""}</li>`)
       .join("");
 };
-newRules(rules);
+
+
+// runInstruction(0);
+// newRules(rules);

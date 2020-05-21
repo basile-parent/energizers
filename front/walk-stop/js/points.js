@@ -1,15 +1,11 @@
-let SCORE = 0;
-let ALL_SCORES = [
-  { pseudo: "Toto", score: 5432 },
-  { pseudo: "Titi", score: 4321 },
-  { pseudo: "Tutu", score: 3210 },
-];
+let SCORE = localStorage.getItem("score") || 0;
 
 const scorePoints = points => {
   const id = randomId();
   createScoreDiv(id, points);
 
   SCORE = Math.max(0, SCORE + points);
+  localStorage.setItem("score", SCORE);
   updateScore();
 
   setTimeout(() => {
@@ -44,10 +40,11 @@ const getHTMLScore = score => {
   html += "</span>" + score;
   return html;
 };
-updateScore();
 
-const updateLeaderBoard = () => {
+const updateLeaderBoard = leaderboard => {
   document.querySelector("#leaderboard ul").innerHTML =
-    ALL_SCORES.map(s => `<li>${ s.pseudo } &nbsp;&nbsp;&nbsp;&nbsp;${ getHTMLScore(s.score) }</li>`).join("");
+    leaderboard.map(s => `<li>${ s.name } &nbsp;&nbsp;&nbsp;&nbsp;${ getHTMLScore(s.score) }</li>`).join("");
 };
-updateLeaderBoard();
+
+updateScore();
+// updateLeaderBoard(ALL_SCORES);

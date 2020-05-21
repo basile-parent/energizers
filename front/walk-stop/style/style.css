@@ -47,6 +47,34 @@ p {
     --animation-delay: 0.9s;
 }
 
+.modal-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 9999999;
+}
+
+.modal-dialog.hidden {
+    display: none;
+}
+
+.modal-dialog dialog {
+    position: absolute;
+    background-color: #222;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    border: 3px grey solid;
+    z-index: 1000;
+    color: white;
+    box-shadow: 5px 5px 10px #222;
+    padding: 10px;
+}
+
+
 #instruction {
     flex: 1;
     display: flex;
@@ -86,6 +114,7 @@ p {
     right : 25px;
     font-size: 30px;
     font-family: arcade, neon, serif;
+    text-align: right;
 }
 
 #leaderboard ul li:first-of-type {
@@ -183,4 +212,22 @@ p {
 }
 #rules .rules-description {
     font-family: Arial, serif;
+}
+
+#pseudo dialog {
+    height : 185px;
+    margin-top: -93px;
+    width : 400px;
+    margin-left: -200px;
+    padding: 10px 25px;
+}
+
+#pseudo input {
+    width: 100%;
+    background-color: #4c4c4c;
+    color: white;
+    font-size: 30px;
+    font-family: neon, Arial, serif;
+    font-weight: bold;
+    padding: 5px 10px;
 }

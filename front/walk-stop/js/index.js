@@ -4,7 +4,6 @@ INSTRUCTION.classList.add("instruction-animation__out");
 const showInstruction = (message, color) => {
   INSTRUCTION.innerHTML = message;
   INSTRUCTION.className = INSTRUCTION.className.replace( /(?:^|(?<= ))(glow-[a-z\-]+)(?:(?= )|$)/ , '' )
-  // INSTRUCTION.classList.remove("glow-" + color);
   INSTRUCTION.classList.add("glow-" + color);
 
   INSTRUCTION.classList.remove("instruction-animation__out");
