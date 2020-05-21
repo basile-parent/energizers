@@ -13,6 +13,12 @@ html, body {
     box-sizing: border-box;
 }
 
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
 #full-screen {
     display: flex;
     height: 100%;
@@ -81,12 +87,26 @@ html, body {
 #leaderboard p {
     margin: 0;
 }
-
-#leaderboard ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
 #leaderboard ul li:first-of-type {
     color: #feff86;
+}
+
+#lexique {
+    position: absolute;
+    top : 100px;
+    left : 25px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.lexique__tooltip {
+    display: inline-block;
+    height: 22px;
+    line-height: 18px;
+    width: 22px;
+    text-align: center;
+    font-family: Arial, serif;
+    font-size: 15px;
+    border: 2px solid white;
+    border-radius: 30px;
 }

@@ -16,14 +16,22 @@ const getRandomTimer = (rangeMin, rangeMax) => {
 
 const calcRandomTimer = () => getRandomTimer(INSTRUCTION_INPUT_PROPERTIES.timerRangeMin, INSTRUCTION_INPUT_PROPERTIES.timerRangeMax);
 
+const rules = [
+  { code: "letter", label: "Clic", color: "green", replacementLabel: "Lettre", replacementColor: "red" },
+  { code: "click", label: "Lettre", color: "red", replacementLabel: "Clic", replacementColor: "green" },
+  { code: "space", label: "Chiffre", color: "blue", replacementLabel: "Espace", replacementColor: "light-yellow" },
+  { code: "number", label: "Espace", color: "light-yellow", replacementLabel: "Chiffre", replacementColor: "blue" },
+  { code: "nothing", label: "Rien", color: "pink" },
+  { code: "shake", label: "Secoue", color: "yellow" }
+];
 const instructions = [
-  { code: "click", message: "Clic", color: "green", timeout: calcRandomTimer() },
-  { code: "letter", message: "Lettre", color: "red", timeout: calcRandomTimer() },
-  { code: "click", message: "Clic", color: "green", timeout: calcRandomTimer() },
-  { code: "number", message: "Chiffre", color: "blue", timeout: calcRandomTimer() },
-  { code: "space", message: "Espace", color: "light-yellow", timeout: calcRandomTimer() },
-  { code: "nothing", message: "Rien", color: "pink", timeout: calcRandomTimer() },
-  { code: "shake", message: "Secoue", color: "yellow", timeout: calcRandomTimer() },
+  { code: "click", label: "Clic", color: "green", timeout: calcRandomTimer() },
+  { code: "letter", label: "Lettre", color: "red", timeout: calcRandomTimer() },
+  { code: "click", label: "Clic", color: "green", timeout: calcRandomTimer() },
+  { code: "number", label: "Chiffre", color: "blue", timeout: calcRandomTimer() },
+  { code: "space", label: "Espace", color: "light-yellow", timeout: calcRandomTimer() },
+  { code: "nothing", label: "Rien", color: "pink", timeout: calcRandomTimer() },
+  { code: "shake", label: "Secoue", color: "yellow", timeout: calcRandomTimer() },
 ];
 
 const runInstruction = (index) => {
@@ -33,8 +41,8 @@ const runInstruction = (index) => {
   }
 
   CURRENT_INSTRUCTION = instructions[index];
-  setTimeout(() => {
-      showInstruction(CURRENT_INSTRUCTION.message, CURRENT_INSTRUCTION.color);
+  setTimeout(() => {1
+      showInstruction(CURRENT_INSTRUCTION.label, CURRENT_INSTRUCTION.color);
       CURRENT_INSTRUCTION.showed = true;
       CURRENT_INSTRUCTION.timer = new Date();
       setTimeout(() => {
@@ -69,7 +77,6 @@ const handleInput = input => {
 
     console.log(`Success +${ points } points`);
     endInstruction(points);
-    return;
   }
 };
 
@@ -91,3 +98,10 @@ const endInstruction = points => {
   hideInstruction();
   scorePoints(points);
 };
+
+const updateLexique = rules => {
+  document.querySelector("#lexique ul").innerHTML =
+    rules.map(r => `<li><span class="lexique__${ r.color }">${ r.label }</span>${ r.replacementLabel ? ` 🡆 <span class="lexique__${ r.replacementColor }">${ r.replacementLabel }</span>` : "" }</li>`)
+      .join("")
+};
+updateLexique(rules);

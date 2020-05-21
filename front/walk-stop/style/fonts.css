@@ -1,15 +1,15 @@
 @font-face {
     font-family: 'neon';
-    src: url('neon.woff2') format('woff2'),
-    url('neon.woff') format('woff');
+    src: url('fonts/neon.woff2') format('woff2'),
+    url('fonts/neon.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'arcade';
-    src: url('arcadeclassic.woff2') format('woff2'),
-    url('arcadeclassic.woff') format('woff');
+    src: url('fonts/arcadeclassic.woff2') format('woff2'),
+    url('fonts/arcadeclassic.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
