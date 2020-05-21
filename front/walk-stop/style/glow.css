@@ -32,3 +32,12 @@
 .lexique__yellow { color : var(--glow-yellow); }
 .lexique__light-yellow { color : var(--glow-light-yellow); }
 .lexique__green { color : var(--glow-green); }
+
+@keyframes color-randomize {
+    0% { color: var(--glow-blue); }
+    20% { color: var(--glow-pink); }
+    40% { color: var(--glow-red); }
+    60% { color: var(--glow-light-yellow); }
+    80% { color: var(--glow-green); }
+    100% { color: var(--glow-yellow); }
+}
