@@ -1,0 +1,70 @@
+html, body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #444;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: neon, serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#full-screen {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#full-screen h1 {
+    font-size: 50px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue), 0 0 150px var(--glow-blue);
+
+    animation: 10s linear 1s neon-glow infinite;
+}
+
+:root {
+    --animate-duration: 800ms;
+    --animation-delay: 0.9s;
+}
+
+#instruction {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 200px;
+    font-weight: bold;
+}
+
+.instruction-animation__in {
+    animation: zoomIn;
+    animation-duration: 400ms;
+}
+
+.instruction-animation__out {
+    animation: fadeOut;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+}
+
+#score {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    font-size: 60px;
+    font-family: arcade, neon, serif;
+}
+
+#score-points__leading_zeros {
+    color : grey;
+}

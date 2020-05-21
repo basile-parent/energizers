@@ -1,0 +1,19 @@
+.score-popup {
+    position: absolute;
+    top: calc(50% - 150px);
+    right: 10%;
+    font-size: 80px;
+    font-family: arcade, neon, serif;
+
+    opacity: 0;
+    animation: 0.8s ease pop-score;
+}
+
+@keyframes pop-score {
+    0% { opacity: 0; margin-top: 100px; }
+    50% { opacity: 1; margin-top: 0; }
+    100% { opacity: 0; margin-top: -50px; }
+}
+
+.score-popup__positive { color: #5aff5a; }
+.score-popup__negative { color: #ff7676; }

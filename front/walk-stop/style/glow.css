@@ -1,0 +1,27 @@
+:root {
+    --glow-blue: #00DEFF;
+    --glow-pink: #ff52e7;
+    --glow-red: #ff1826;
+    --glow-yellow: #fcff40;
+    --glow-light-yellow: #ffffe0;
+    --glow-green: #4cff45;
+}
+
+.glow-blue { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue), 0 0 150px var(--glow-blue); }
+.glow-pink { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-pink), 0 0 70px var(--glow-pink), 0 0 80px var(--glow-pink), 0 0 100px var(--glow-pink), 0 0 150px var(--glow-pink); }
+.glow-red { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-red), 0 0 70px var(--glow-red), 0 0 80px var(--glow-red), 0 0 100px var(--glow-red), 0 0 150px var(--glow-red); }
+.glow-yellow { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-yellow), 0 0 70px var(--glow-yellow), 0 0 80px var(--glow-yellow), 0 0 100px var(--glow-yellow), 0 0 150px var(--glow-yellow); }
+.glow-light-yellow { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-light-yellow), 0 0 70px var(--glow-light-yellow), 0 0 80px var(--glow-light-yellow), 0 0 100px var(--glow-light-yellow), 0 0 150px var(--glow-light-yellow); }
+.glow-green { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-green), 0 0 70px var(--glow-green), 0 0 80px var(--glow-green), 0 0 100px var(--glow-green), 0 0 150px var(--glow-green); }
+
+@keyframes neon-glow {
+    0% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue), 0 0 150px var(--glow-blue); }
+    10% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue); }
+    20% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue), 0 0 150px var(--glow-blue); }
+    30% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue); }
+    55% { text-shadow: 0 0 10px #fff, 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue); }
+    75% { text-shadow: 0 0 10px #fff, 0 0 60px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue); }
+    78% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue), 0 0 150px var(--glow-blue), 0 0 180px var(--glow-blue), 0 0 220px var(--glow-blue); }
+    80% { text-shadow: 0 0 10px #fff, 0 0 60px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue); }
+    100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue), 0 0 150px var(--glow-blue); }
+}
