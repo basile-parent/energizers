@@ -46,5 +46,5 @@ const updateLeaderBoard = leaderboard => {
     leaderboard.map(s => `<li>${ s.name } &nbsp;&nbsp;&nbsp;&nbsp;${ getHTMLScore(s.score) }</li>`).join("");
 };
 
-updateScore();
+// updateScore();
 // updateLeaderBoard(ALL_SCORES);

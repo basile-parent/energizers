@@ -7,33 +7,25 @@
     <title>Online Walk and Stop</title>
     <link rel="stylesheet" href="style/fonts.css"/>
     <link rel="stylesheet" href="style/style.css"/>
+    <link rel="stylesheet" href="style/admin.css"/>
     <link rel="stylesheet" href="style/glow.css"/>
     <link rel="stylesheet" href="style/points.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 </head>
 <body>
-<div id="pseudo" class="modal-dialog">
-    <dialog open>
-        <h1>Votre nom</h1>
-        <div>
-            <input type="text" name="pseudo" value="" maxlength="15" />
-        </div>
-    </dialog>
-</div>
-
 <section id="full-screen">
-    <h1>Online Walk and Stop</h1>
+    <h1>Interface admin</h1>
 
-    <main id="instruction" class="">
-    </main>
-
-    <dialog id="rules">
-        <div id="rules-loading-bar"><div></div></div>
-        <h1>Règles</h1>
-        <h2 class="random-color">&nbsp;</h2>
+    <main id="selected-instructions">
+        <h2>Instructions sélectionnées</h2>
         <ul>
         </ul>
-    </dialog>
+    </main>
+
+    <aside id="instruction-list">
+        <ul>
+        </ul>
+    </aside>
 
     <aside id="leaderboard">
         <p>Leaderboard</p>
@@ -41,23 +33,12 @@
 
         </ul>
     </aside>
-
-    <aside id="lexique">
-        <ul>
-        </ul>
-    </aside>
-
-    <footer id="score">
-        Score &nbsp;&nbsp;&nbsp;&nbsp;
-        <span id="score-points"><span class="score-leading-zeros">0000</span>0</span>
-    </footer>
 </section>
 
-<script src="js/index.js"></script>
-<script src="js/instructions.js"></script>
-<script src="js/points.js"></script>
+<script src="js/admin.js"></script>
 <script src="js/socket.io.js"></script>
 <script src="js/reconnecting-websocket.js"></script>
-<script src="js/player-websocket.js"></script>
+<script src="js/admin-websocket.js"></script>
+<script src="js/points.js"></script>
 </body>
 </html>

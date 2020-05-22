@@ -1,10 +1,15 @@
+const UserType = {
+  PLAYER: "player",
+  ADMIN: "admin"
+};
+
 class WebsocketClient {
-  constructor(url) {
-    this.socket = io.connect(WEBSOCKET_URL);
+  constructor(url, userType) {
+    this.socket = io.connect(url);
     this.isConnected = false;
+    this.userType = userType;
 
     this._initReconnectingProcess();
-    this._initMessageHandler();
   }
 
   _initReconnectingProcess = () => {
@@ -12,11 +17,13 @@ class WebsocketClient {
       this.isConnected = true;
       console.log("Connecté");
 
-      if (localStorage.getItem("name")) {
-        this.emit('setName', localStorage.getItem("name"));
-      }
-      if (localStorage.getItem("score")) {
-        this.emit('setPoints', localStorage.getItem("score"));
+      if (this.userType === UserType.PLAYER) {
+        if (localStorage.getItem("name")) {
+          this.emit('setName', localStorage.getItem("name"));
+        }
+        if (localStorage.getItem("score")) {
+          this.emit('setPoints', localStorage.getItem("score"));
+        }
       }
     });
     this.socket.on('connect_error', () => {
@@ -30,10 +37,8 @@ class WebsocketClient {
     });
   };
 
-  _initMessageHandler = () => {
-    this.socket.on('leaderboard', function(leaderboard) {
-      updateLeaderBoard(leaderboard);
-    });
+  on = (channel, func) => {
+    this.socket.on(channel, func);
   };
 
   emit = (channel, message) => {

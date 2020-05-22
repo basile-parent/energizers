@@ -8,6 +8,23 @@ let INSTRUCTION_INPUT_PROPERTIES = {
   timerRangeMax: 1500,
 };
 
+const INSTRUCTION_DIV = document.getElementById("instruction");
+INSTRUCTION_DIV.classList.add("instruction-animation__out");
+
+const showInstruction = (message, color) => {
+  INSTRUCTION_DIV.innerHTML = message;
+  INSTRUCTION_DIV.className = INSTRUCTION_DIV.className.replace( /(?:^|(?<= ))(glow-[a-z\-]+)(?:(?= )|$)/ , '' )
+  INSTRUCTION_DIV.classList.add("glow-" + color);
+
+  INSTRUCTION_DIV.classList.remove("instruction-animation__out");
+  INSTRUCTION_DIV.classList.add("instruction-animation__in");
+};
+
+const hideInstruction = () => {
+  INSTRUCTION_DIV.classList.remove("instruction-animation__in");
+  INSTRUCTION_DIV.classList.add("instruction-animation__out");
+};
+
 const getRandomTimer = (rangeMin, rangeMax) => {
   const diff = rangeMax - rangeMin;
   const token = Math.round(Math.random() * diff);

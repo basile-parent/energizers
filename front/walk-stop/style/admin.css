@@ -1,0 +1,66 @@
+main {
+    flex: 1;
+    padding-top: 150px;
+    min-width: 600px;
+}
+
+#selected-instructions li {
+    display: flex;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size : 40px;
+    margin-bottom: 20px;
+}
+
+#selected-instructions li span { flex: 1; }
+#selected-instructions li span:nth-of-type(2) { text-align: center; }
+.selected-instructions__delete {
+    width: 30px;
+    background-color: red;
+    flex: 0 !important;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 0 8px;
+    height: 30px;
+    display: inline-block;
+    margin: 10px 0 0 40px;
+    font-family: Arial, serif;
+    font-weight: bold;
+    line-height: 30px;
+    box-shadow: 2px 2px 4px #222;
+}
+
+#selected-instructions select {
+    background-color: #222;
+    font-size: 40px;
+    color: white;
+    font-family: neon, serif;
+    width : 220px;
+}
+
+#selected-instructions .noReplacement {
+    color: grey;
+}
+
+#instruction-list {
+    position: absolute;
+    left: 25px;
+    top : 100px;
+    font-size : 30px;
+}
+
+#instruction-list li {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#instruction-list li.selected {
+    background-color: #666;
+}

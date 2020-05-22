@@ -1,20 +1,3 @@
-const INSTRUCTION = document.getElementById("instruction");
-INSTRUCTION.classList.add("instruction-animation__out");
-
-const showInstruction = (message, color) => {
-  INSTRUCTION.innerHTML = message;
-  INSTRUCTION.className = INSTRUCTION.className.replace( /(?:^|(?<= ))(glow-[a-z\-]+)(?:(?= )|$)/ , '' )
-  INSTRUCTION.classList.add("glow-" + color);
-
-  INSTRUCTION.classList.remove("instruction-animation__out");
-  INSTRUCTION.classList.add("instruction-animation__in");
-};
-
-const hideInstruction = () => {
-  INSTRUCTION.classList.remove("instruction-animation__in");
-  INSTRUCTION.classList.add("instruction-animation__out");
-};
-
 const randomId = () => {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
