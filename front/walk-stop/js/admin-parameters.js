@@ -4,23 +4,23 @@ const PRESET_PARAMETERS = {
     range: { min: 1200, max: 1800},
     maxPointsDelay: 350,
     duration: 30000,
-    rulesDuration: 30000,
+    rulesDuration: 20000,
     maxPoints: 1000
   },
   normal: {
     timeout: 1500,
     range: { min: 1500, max: 2500},
-    maxPointsDelay: 500,
+    maxPointsDelay: 700,
     duration: 30000,
-    rulesDuration: 30000,
+    rulesDuration: 20000,
     maxPoints: 1000
   },
   slow: {
     timeout: 3000,
     range: { min: 2000, max: 3000},
-    maxPointsDelay: 800,
+    maxPointsDelay: 1000,
     duration: 30000,
-    rulesDuration: 30000,
+    rulesDuration: 20000,
     maxPoints: 1000
   }
 };
@@ -68,7 +68,7 @@ const initParameters = newParameters => {
   document.getElementById("input-rules-duration").value = parameters.rulesDuration / 1000;
   UPDATE_PARAMETER_ON_INPUT_CHANGE = true;
 
-  if (!parameters) {
+  if (!newParameters) {
     updateParameters();
   }
 };

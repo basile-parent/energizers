@@ -40,5 +40,10 @@ const validateName = name => {
 
 WS_CLIENT.on("launchGame", sequence => {
   console.log(sequence);
-  // launchGame(sequence.rules, sequence.instructions, sequence.instructionProperties);
+  launchGame(sequence.rules, sequence.instructions, sequence.parameters);
+});
+
+WS_CLIENT.on("reinitScore", () => {
+  SCORE = 0;
+  updateScore();
 });

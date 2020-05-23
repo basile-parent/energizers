@@ -5,7 +5,6 @@ const scorePoints = points => {
   createScoreDiv(id, points);
 
   SCORE = Math.max(0, SCORE + points);
-  localStorage.setItem("score", SCORE);
   WS_CLIENT.emit("setPoints", SCORE);
   updateScore();
 
@@ -30,6 +29,7 @@ const createScoreDiv = (id, points) => {
 };
 
 const updateScore = () => {
+  localStorage.setItem("score", SCORE);
   document.getElementById("score-points").innerHTML = getHTMLScore(SCORE);
 };
 const getHTMLScore = score => {

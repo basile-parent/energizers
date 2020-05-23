@@ -33,19 +33,18 @@ const generateSequence = () => {
     }
 
     const randomInstruction = SELECTED_INSTRUCTIONS[Math.floor(Math.random() * SELECTED_INSTRUCTIONS.length)];
-
     timer += randomTimeout;
 
     generatedInstructions.push({
       code: randomInstruction.replacementCode || randomInstruction.code,
       label: randomInstruction.label,
       color: randomInstruction.color,
-      timeout: timer
+      timeout: randomTimeout
     });
   }
 
   const rules = {
-    dialogTimeout: parameters.rulesDuration * 1000,
+    dialogTimeout: parameters.rulesDuration,
     randomColors: false,
     allRules: SELECTED_INSTRUCTIONS
       .sort((a, b) => a.order - b.order)

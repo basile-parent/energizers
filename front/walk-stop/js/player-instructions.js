@@ -66,7 +66,7 @@ const startGame = async (instructions) => {
 
   COUNTDOWN_DIV.classList.add("hidden");
   INSTRUCTION_DIV.classList.remove("hidden");
-  // runInstruction(instructions, 0);
+  runInstruction(instructions, 0);
 };
 
 const showCount = async count => {
@@ -92,6 +92,7 @@ const hideCountdown = () => {
 const runInstruction = (instructions, index) => {
   if (index >= instructions.length) {
     // Fin du jeu
+    console.log("Fin du jeu");
     return;
   }
 
@@ -121,10 +122,11 @@ const handleInput = input => {
     return;
   }
   if (CURRENT_INSTRUCTION.code === input) {
-    const diff = new Date() - CURRENT_INSTRUCTION.timer;
+    let diff = new Date() - CURRENT_INSTRUCTION.timer;
 
     let points = INSTRUCTION_INPUT_PROPERTIES.maxPoints;
     if (diff > INSTRUCTION_INPUT_PROPERTIES.pointsDecreaseStartPoint) {
+      diff -= INSTRUCTION_INPUT_PROPERTIES.pointsDecreaseStartPoint;
       points -= Math.max(0, Math.round(diff * INSTRUCTION_INPUT_PROPERTIES.decreasePointByMillisecond));
     }
 
@@ -154,12 +156,12 @@ const endInstruction = points => {
 
 const launchGame = async (rules, instructions, instructionProperties) => {
   INSTRUCTION_INPUT_PROPERTIES = {
-    timeout: 1500,
-    maxPoints: 1000,
-    pointsDecreaseStartPoint: 500, // Duration when points start decreasing
-    decreasePointByMillisecond: 1000 / 1500,
-    timerRangeMin: 500,
-    timerRangeMax: 1500,
+    timeout: instructionProperties.timeout,
+    maxPoints: instructionProperties.maxPoints,
+    pointsDecreaseStartPoint: instructionProperties.maxPointsDelay,
+    decreasePointByMillisecond: instructionProperties.maxPoints / (instructionProperties.timeout - instructionProperties.maxPointsDelay),
+    timerRangeMin: instructionProperties.range.min,
+    timerRangeMax: instructionProperties.range.max,
   };
   updateLexique(rules);
   await showRules(rules);
@@ -190,7 +192,7 @@ const showRules = async rules => {
     document.getElementById("rules").open = true;
     const loadingBar = document.querySelector("#rules-loading-bar > div");
     loadingBar.classList.add("load");
-    loadingBar.style.animationDuration = `${ rules.dialogTimeout }ms`;
+    loadingBar.style.animationDuration = `${ rules.dialogTimeout / 1000 }s`;
     setTimeout(() => {
       document.getElementById("rules").open = false;
       loadingBar.classList.add("remove");
