@@ -1,5 +1,6 @@
 let PLAYERS = [];
 let SEQUENCE = null;
+let PARAMETERS = null;
 
 const logPlayers = () => {
   console.log(PLAYERS.length + " joueur(s)");
@@ -51,8 +52,13 @@ const initWebsocket = io => {
     socket.on('deleteSequence', () => SEQUENCE = null);
     socket.on('getSequence', () => socket.emit('sequence', SEQUENCE));
     socket.on('launchGame', () => {
-      socket.broadcast.emit('launchGame', SEQUENCE);
+      socket.broadcast.emit('launchGame', { ...SEQUENCE, parameters : PARAMETERS });
     });
+    socket.on('setParameters', parameters => {
+      PARAMETERS = parameters;
+      console.log(PARAMETERS);
+    });
+    socket.on('getParameters', () => socket.emit('parameters', PARAMETERS));
     socket.on('reinitScore', () => {
       PLAYERS = PLAYERS.map(p => ({ ...p, socket: { ...p.socket, points: 0 }}));
       logPlayers();

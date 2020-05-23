@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 </head>
 <body>
-<div id="pseudo" class="modal-dialog">
+<div id="pseudo" class="modal-dialog hidden">
     <dialog open>
         <h1>Votre nom</h1>
         <div>
@@ -24,7 +24,10 @@
 <section id="full-screen">
     <h1>Online Walk and Stop</h1>
 
-    <main id="instruction" class="">
+    <main id="instruction" class="hidden">
+    </main>
+    <main id="countdown" class="">
+
     </main>
 
     <dialog id="rules">
@@ -54,7 +57,7 @@
 </section>
 
 <script src="js/index.js"></script>
-<script src="js/instructions.js"></script>
+<script src="js/player-instructions.js"></script>
 <script src="js/points.js"></script>
 <script src="js/socket.io.js"></script>
 <script src="js/reconnecting-websocket.js"></script>

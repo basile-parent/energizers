@@ -29,26 +29,32 @@
         </ul>
         <section id="parameters">
             <h2>Paramètres</h2>
+            <header id="presets">
+                <span>Préconf :</span>
+                <button onclick="applyPreset('quick');">Rapide</button>
+                <button onclick="applyPreset('normal');">Normal</button>
+                <button onclick="applyPreset('slow');">Lent</button>
+            </header>
             <div>
                 <article id="parameters__duration">
-                    Durée : <input id="input-duration" type="text" maxlength="3" value="30" />s
+                    Durée : <input id="input-duration" type="text" maxlength="3" onkeypress="handleParameterInput(event)" onChange="updateParameters()" />s
                 </article>
                 <article id="parameters__timeout">
-                    Timeout instruction : <input id="input-timeout" type="text" maxlength="6" value="1500" />ms
+                    Timeout instruction : <input id="input-timeout" type="text" maxlength="6" onChange="updateParameters()" />ms
                 </article>
                 <article id="parameters__range">
                     Délai entre inputs :
-                    <input id="input-range-min" type="text" maxlength="6" value="2000" />ms
-                    - <input id="input-range-max" type="text" maxlength="6" value="3000" />ms
+                    <input id="input-range-min" type="text" maxlength="6" value="2000" onChange="updateParameters()" />ms
+                    - <input id="input-range-max" type="text" maxlength="6" value="3000" onChange="updateParameters()" />ms
                 </article>
                 <article id="parameters__max-points">
-                    Max points : <input id="input-max-points" type="text" maxlength="5" value="1000" />
+                    Max points : <input id="input-max-points" type="text" maxlength="5" onChange="updateParameters()" />
                 </article>
                 <article id="parameters__max-points-delay">
-                    Max points délai : <input id="input-max-points-delay" type="text" maxlength="5" value="500" />ms
+                    Max points délai : <input id="input-max-points-delay" type="text" maxlength="5" onChange="updateParameters()" />ms
                 </article>
                 <article id="parameters__rules-duration">
-                    Durée aff. règles : <input id="input-rules-duration" type="text" maxlength="3" value="30" />s
+                    Durée aff. règles : <input id="input-rules-duration" type="text" maxlength="3" onChange="updateParameters()" />s
                 </article>
             </div>
         </section>
@@ -78,6 +84,7 @@
 
 <script src="js/admin-websocket.js"></script>
 <script src="js/admin-instructions.js"></script>
+<script src="js/admin-parameters.js"></script>
 <script src="js/admin-generate-sequence.js"></script>
 </body>
 </html>

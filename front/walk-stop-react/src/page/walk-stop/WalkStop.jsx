@@ -7,7 +7,7 @@ import InstructionPopper from "./components/InstructionPopper";
 import {Animated} from "react-animated-css";
 import PopupPoints from "./components/PopupPoints";
 
-const isNumbers = keyNumber => [34, 38, 39, 40, 45, 95, 224, 231, 232, 233,
+const isNumber = keyNumber => [34, 38, 39, 40, 45, 95, 224, 231, 232, 233,
   48, 49, 50, 51, 52, 53, 54, 55, 56, 57].includes(keyNumber);
 
 const isLetter = keyNumber => (keyNumber >= 97 && keyNumber <= 122) || (keyNumber >= 65 && keyNumber <= 90);
@@ -20,7 +20,7 @@ const WalkStop = ({match: {params}}) => {
 
   useEffect(() => {
     window.addEventListener("keypress", e => {
-      const input = isNumbers(e.which) ? "number" :
+      const input = isNumber(e.which) ? "number" :
         isLetter(e.which) ? "letter" :
           isSpace(e.which) ? "space" : null;
       input && instructionRef.current.handleInput(input);

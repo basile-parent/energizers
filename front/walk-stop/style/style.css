@@ -24,7 +24,7 @@ p {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #full-screen {
@@ -74,7 +74,7 @@ p {
     padding: 10px;
 }
 
-
+#countdown,
 #instruction {
     flex: 1;
     display: flex;
@@ -94,6 +94,12 @@ p {
     animation: fadeOut;
     animation-duration: 200ms;
     animation-fill-mode: forwards;
+}
+
+#countdown {
+    font-family: arcade, serif;
+    color: #ff6a6a;
+    font-size: 300px;
 }
 
 #score {
@@ -116,10 +122,8 @@ p {
     font-family: arcade, neon, serif;
     text-align: right;
 }
-
-#leaderboard ul li:first-of-type {
-    color: #feff86;
-}
+#leaderboard ul li:first-of-type { color: #feff86; }
+#leaderboard ul li.change-name { cursor: pointer; }
 
 #lexique {
     position: absolute;

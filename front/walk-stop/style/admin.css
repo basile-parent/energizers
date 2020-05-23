@@ -124,6 +124,7 @@ footer button#delete-sequence {
 #leaderboard {
     top: 82px;
 }
+#presets button,
 #reinit-score {
     padding: 5px 15px;
     font-size: 12px;
@@ -134,4 +135,15 @@ footer button#delete-sequence {
     background-color: #21489c;
     font-family: Arial, serif;
     margin-right: 35px;
+}
+
+#presets {
+    font-family: Arial, serif;
+}
+#presets button {
+    display: inline-block;
+    margin : 0 5px 10px 0;
+    border-color: #e0e0e0;
+    background-color: #222222;
+    width: 70px;
 }

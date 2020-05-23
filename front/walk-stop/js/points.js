@@ -6,6 +6,7 @@ const scorePoints = points => {
 
   SCORE = Math.max(0, SCORE + points);
   localStorage.setItem("score", SCORE);
+  WS_CLIENT.emit("setPoints", SCORE);
   updateScore();
 
   setTimeout(() => {
@@ -42,8 +43,12 @@ const getHTMLScore = score => {
 };
 
 const updateLeaderBoard = leaderboard => {
+  const myName = localStorage.getItem("name");
   document.querySelector("#leaderboard ul").innerHTML =
-    leaderboard.map(s => `<li>${ s.name } &nbsp;&nbsp;&nbsp;&nbsp;${ getHTMLScore(s.score) }</li>`).join("");
+    leaderboard.map(player => `
+          <li ${ player.name === myName ? "class='change-name' onClick='showNamePopup()'" : "" }>
+            ${ player.name } &nbsp;&nbsp;&nbsp;&nbsp;${ getHTMLScore(player.score) }
+          </li>`).join("");
 };
 
 // updateScore();

@@ -12,38 +12,14 @@ const rules = {
     {code: "shake", label: "Secoue", color: "yellow", description: "Bouger la souris." }
   ]};
 
-const getParameters = () => {
-  const parameters = {
-    duration: parseInt(document.getElementById("input-duration").value) * 1000,
-    timeout: parseInt(document.getElementById("input-timeout").value),
-    range: { min: parseInt(document.getElementById("input-range-min").value), max: parseInt(document.getElementById("input-range-max").value)},
-    maxPoints: parseInt(document.getElementById("input-max-points").value),
-    maxPointsDelay: parseInt(document.getElementById("input-max-points-delay").value),
-    rulesDuration: parseInt(document.getElementById("input-rules-duration").value),
-  };
-
-  Object.keys(parameters).forEach(key => {
-    if (!parameters[key]) {
-      console.error("Parameters not complete", parameters);
-      alert("Vous devez spécifier une valeur pour " + key);
-      throw new Error("Parameters not complete");
-    }
-  });
-
-  return parameters;
-};
-
 const generateSequence = () => {
-  const parameters = getParameters();
-  generateInstructions(SELECTED_INSTRUCTIONS, parameters);
-};
-
-const generateInstructions = (selectedInstructions, parameters) => {
+  const selectedInstructions = SELECTED_INSTRUCTIONS;
   if (selectedInstructions.length < 2) {
     alert("Vous devez sélectionner au minimum 2 instructions");
     throw new Error("You must choose instructions at leasts 2 instructions");
   }
 
+  const parameters = getParameters();
   const generatedInstructions = [];
   let timer = 0;
   const rangeDiff = parameters.range.max - parameters.range.min;
