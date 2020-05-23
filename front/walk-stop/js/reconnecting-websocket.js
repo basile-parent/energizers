@@ -4,10 +4,11 @@ const UserType = {
 };
 
 class WebsocketClient {
-  constructor(url, userType) {
+  constructor(url, userType, connectionCallback) {
     this.socket = io.connect(url);
     this.isConnected = false;
     this.userType = userType;
+    this.connectionCallback = connectionCallback;
 
     this._initReconnectingProcess();
   }
@@ -25,10 +26,12 @@ class WebsocketClient {
           this.emit('setPoints', localStorage.getItem("score"));
         }
       }
+
+      this.connectionCallback && this.connectionCallback();
     });
     this.socket.on('connect_error', () => {
       console.log("Erreur lors de la connexion. Tentative de reconnexion...");
-      this.open();
+      this.socket.open();
     });
     this.socket.on('disconnect', () => {
       console.log("Déconnecté. Tentative de reconnexion...");

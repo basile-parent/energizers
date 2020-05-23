@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <!--    <link rel="icon" href="resources/icon.png" />-->
@@ -16,18 +16,53 @@
 <section id="full-screen">
     <h1>Interface admin</h1>
 
-    <main id="selected-instructions">
-        <h2>Instructions sélectionnées</h2>
-        <ul>
-        </ul>
+    <main>
+        <section id="selected-instructions">
+            <h2>Instructions sélectionnées</h2>
+            <ul>
+            </ul>
+        </section>
     </main>
 
     <aside id="instruction-list">
         <ul>
         </ul>
+        <section id="parameters">
+            <h2>Paramètres</h2>
+            <div>
+                <article id="parameters__duration">
+                    Durée : <input id="input-duration" type="text" maxlength="3" value="30" />s
+                </article>
+                <article id="parameters__timeout">
+                    Timeout instruction : <input id="input-timeout" type="text" maxlength="6" value="1500" />ms
+                </article>
+                <article id="parameters__range">
+                    Délai entre inputs :
+                    <input id="input-range-min" type="text" maxlength="6" value="2000" />ms
+                    - <input id="input-range-max" type="text" maxlength="6" value="3000" />ms
+                </article>
+                <article id="parameters__max-points">
+                    Max points : <input id="input-max-points" type="text" maxlength="5" value="1000" />
+                </article>
+                <article id="parameters__max-points-delay">
+                    Max points délai : <input id="input-max-points-delay" type="text" maxlength="5" value="500" />ms
+                </article>
+                <article id="parameters__rules-duration">
+                    Durée aff. règles : <input id="input-rules-duration" type="text" maxlength="3" value="30" />s
+                </article>
+            </div>
+        </section>
     </aside>
 
+    <footer>
+        <button id="delete-sequence" onclick="deleteSequence()">Reset setup</button>
+        <span id="sequence-id" class="hidden">Séquence générée : <span></span></span>
+        <button id="generate-sequence" onclick="generateSequence()">Générer la séquence</button>
+        <button id="launch-game" onclick="launchGame()" disabled="disabled">Lancer la partie</button>
+    </footer>
+
     <aside id="leaderboard">
+        <button id="reinit-score" onclick="reinitScore()">Remise à zéro</button>
         <p>Leaderboard</p>
         <ul>
 
@@ -35,10 +70,14 @@
     </aside>
 </section>
 
-<script src="js/admin.js"></script>
 <script src="js/socket.io.js"></script>
 <script src="js/reconnecting-websocket.js"></script>
-<script src="js/admin-websocket.js"></script>
+
+<script src="js/admin.js"></script>
 <script src="js/points.js"></script>
+
+<script src="js/admin-websocket.js"></script>
+<script src="js/admin-instructions.js"></script>
+<script src="js/admin-generate-sequence.js"></script>
 </body>
 </html>

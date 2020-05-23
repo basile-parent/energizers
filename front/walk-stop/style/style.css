@@ -23,6 +23,10 @@ p {
     margin: 0;
 }
 
+.hidden {
+    display: none;
+}
+
 #full-screen {
     display: flex;
     height: 100%;
@@ -55,10 +59,6 @@ p {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 9999999;
-}
-
-.modal-dialog.hidden {
-    display: none;
 }
 
 .modal-dialog dialog {

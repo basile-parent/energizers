@@ -1,7 +1,8 @@
 main {
     flex: 1;
-    padding-top: 150px;
-    min-width: 600px;
+    padding-top: 100px;
+    width: 800px;
+    /*margin-left: 250px;*/
 }
 
 #selected-instructions li {
@@ -48,7 +49,7 @@ main {
 #instruction-list {
     position: absolute;
     left: 25px;
-    top : 100px;
+    top : 150px;
     font-size : 30px;
 }
 
@@ -59,8 +60,78 @@ main {
     margin-bottom: 15px;
     font-weight: bold;
     cursor: pointer;
+    width: 200px;
 }
 
 #instruction-list li.selected {
     background-color: #666;
+}
+
+footer {
+    position: absolute;
+    bottom : 25px;
+    right : 25px;
+    font-family: Arial, serif;
+}
+
+footer button {
+    padding: 10px 30px;
+    font-size: 25px;
+    border-radius: 3px;
+    border: 1px solid #3bc636;
+    background-color: #009c00;
+    color: white;
+    cursor: pointer;
+}
+footer button[disabled] {
+    border: 1px solid #93c684;
+    background-color: #689c65;
+    color: #c7c7c7;
+    cursor: not-allowed;
+}
+footer button#delete-sequence {
+    border: 1px solid #f86b63;
+    background-color: #ff4641;
+}
+#sequence-id {
+    position: absolute;
+    bottom: 55px;
+}
+
+#parameters { font-size: 16px; }
+#parameters > h2 { font-size: 20px; }
+#parameters input {
+    background-color: #222;
+    color: white;
+    text-align: right;
+}
+#parameters > div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+#parameters > div > article {
+    font-family: Arial, serif;
+    margin : 0 0 10px;
+}
+#parameters__duration input { width : 30px; }
+#parameters__timeout input { width : 50px; }
+#parameters__range input { width : 50px; }
+#parameters__max-points input { width : 50px; }
+#parameters__max-points-delay input { width : 50px; }
+#parameters__rules-duration input { width : 50px; }
+
+#leaderboard {
+    top: 82px;
+}
+#reinit-score {
+    padding: 5px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    border-color: #2e63ee;
+    background-color: #21489c;
+    font-family: Arial, serif;
+    margin-right: 35px;
 }

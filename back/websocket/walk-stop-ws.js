@@ -1,4 +1,5 @@
 let PLAYERS = [];
+let SEQUENCE = null;
 
 const logPlayers = () => {
   console.log(PLAYERS.length + " joueur(s)");
@@ -29,6 +30,7 @@ const initWebsocket = io => {
 
     PLAYERS.push({ socket });
     logPlayers();
+    socket.emit('leaderboard', getLeaderboard());
 
     socket.on('disconnect', () => {
       console.log(socket.name ? socket.name + " disconnected" : "Unknown player disconnected");
@@ -43,6 +45,18 @@ const initWebsocket = io => {
     });
     socket.on('setPoints', points => {
       modifyPlayer(socket.id, "points", parseInt(points));
+      socket.broadcast.emit('leaderboard', getLeaderboard());
+    });
+    socket.on('setSequence', sequence => SEQUENCE = sequence);
+    socket.on('deleteSequence', () => SEQUENCE = null);
+    socket.on('getSequence', () => socket.emit('sequence', SEQUENCE));
+    socket.on('launchGame', () => {
+      socket.broadcast.emit('launchGame', SEQUENCE);
+    });
+    socket.on('reinitScore', () => {
+      PLAYERS = PLAYERS.map(p => ({ ...p, socket: { ...p.socket, points: 0 }}));
+      logPlayers();
+      socket.broadcast.emit('reinitScore', "");
       socket.broadcast.emit('leaderboard', getLeaderboard());
     });
   });
