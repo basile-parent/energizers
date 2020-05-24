@@ -38,6 +38,7 @@ const initWebsocket = io => {
       console.log(socket.name ? socket.name + " disconnected" : "Unknown player disconnected");
       PLAYERS = PLAYERS.filter(p => p.socket.id !== socket.id);
       logPlayers();
+      socket.broadcast.emit('leaderboard', getLeaderboard());
     });
 
     socket.on('setName', name => {
