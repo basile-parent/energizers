@@ -25,5 +25,16 @@ pipeline {
                 sh "docker run -d -p $PORT:3000 --link postgres -v /tmp:/tmp --name $CONTAINER_NAME $CONTAINER_TAG"
             }
         }
+        stage('Deploy Walk and Stop front application') {
+            environment {
+                PORT=3330
+                JENKINS_JOB_NAME="energizers"
+                FOLDER_NAME="walk-stop"
+            }
+            steps {
+                sh 'chmod +x ./build-html.sh'
+                sh "./build-html.sh $JENKINS_JOB_NAME $FOLDER_NAME $WORKSPACE"
+            }
+        }
     }
 }

@@ -1,4 +1,3 @@
-const WEBSOCKET_URL = 'http://localhost:7500';
 const WS_CLIENT = new WebsocketClient(WEBSOCKET_URL, UserType.PLAYER);
 
 WS_CLIENT.on('leaderboard', function(leaderboard) {

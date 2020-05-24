@@ -1,0 +1,1 @@
+const WEBSOCKET_URL = 'http://localhost:7500';
