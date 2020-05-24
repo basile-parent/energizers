@@ -19,7 +19,7 @@ pipeline {
             }
             steps {
                 sh 'chmod +x ./build-node.sh'
-                sh "./build.sh $JENKINS_JOB_NAME $FOLDER_NAME $WORKSPACE $CONTAINER_TAG"
+                sh "./build-node.sh $JENKINS_JOB_NAME $FOLDER_NAME $WORKSPACE $CONTAINER_TAG"
 
                 sh "docker_stop $CONTAINER_NAME"
                 sh "docker run -d -p $PORT:3000 --link postgres -v /tmp:/tmp --name $CONTAINER_NAME $CONTAINER_TAG"
