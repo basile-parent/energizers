@@ -18,4 +18,7 @@ rm -rf $EXPORT_FOLDER/*
 # Copy sources
 cp -r $WORKSPACE/front/$APPLICATION_NAME/* $EXPORT_FOLDER
 
+# Copy configuration
+cp -r /opt/configuration/energizers/$APPLICATION_NAME-constants.js $EXPORT_FOLDER/js/constants.js
+
 set +x
