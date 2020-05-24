@@ -1,4 +1,4 @@
-const WS_CLIENT = new WebsocketClient(WEBSOCKET_URL, UserType.ADMIN, () => {
+const WS_CLIENT = new WebsocketClient(WEBSOCKET_URL, WEBSOCKET_PATH, UserType.ADMIN, () => {
   WS_CLIENT.emit("getSequence", "");
   WS_CLIENT.emit("getParameters", "");
 });

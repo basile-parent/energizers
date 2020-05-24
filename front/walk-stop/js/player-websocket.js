@@ -1,4 +1,4 @@
-const WS_CLIENT = new WebsocketClient(WEBSOCKET_URL, UserType.PLAYER);
+const WS_CLIENT = new WebsocketClient(WEBSOCKET_URL, WEBSOCKET_PATH, UserType.PLAYER);
 
 WS_CLIENT.on('leaderboard', function(leaderboard) {
   updateLeaderBoard(leaderboard);

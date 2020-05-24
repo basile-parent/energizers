@@ -6,14 +6,15 @@ const UserType = {
 const MAX_RECONNECT_TIMEOUT = 5000;
 
 class WebsocketClient {
-  constructor(url, userType, connectionCallback) {
-    this.socket = io.connect(url);
+  constructor(url, path, userType, connectionCallback) {
+    this.socket = io(url, { path });
     this.isConnected = false;
     this.userType = userType;
     this.connectionCallback = connectionCallback;
     this.reconnectionTimeout = 300;
 
     this._initReconnectingProcess();
+    this.socket.connect();
   }
 
   _initReconnectingProcess = () => {
