@@ -1,9 +1,10 @@
-let SCORE = localStorage.getItem("score") || 0;
+let SCORE = localStorage.getItem("score") ? parseInt(localStorage.getItem("score")) : 0;
 
 const scorePoints = points => {
   const id = randomId();
   createScoreDiv(id, points);
 
+  console.log(SCORE, points);
   SCORE = Math.max(0, SCORE + points);
   WS_CLIENT.emit("setPoints", SCORE);
   updateScore();

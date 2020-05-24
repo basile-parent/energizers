@@ -1,7 +1,7 @@
 const PRESET_PARAMETERS = {
   quick: {
     timeout: 900,
-    range: { min: 1200, max: 1800},
+    range: { min: 600, max: 1200},
     maxPointsDelay: 350,
     duration: 30000,
     rulesDuration: 20000,
@@ -9,7 +9,7 @@ const PRESET_PARAMETERS = {
   },
   normal: {
     timeout: 1500,
-    range: { min: 1500, max: 2500},
+    range: { min: 1000, max: 2000},
     maxPointsDelay: 700,
     duration: 30000,
     rulesDuration: 20000,
@@ -17,7 +17,7 @@ const PRESET_PARAMETERS = {
   },
   slow: {
     timeout: 3000,
-    range: { min: 2000, max: 3000},
+    range: { min: 1500, max: 3000},
     maxPointsDelay: 1000,
     duration: 30000,
     rulesDuration: 20000,

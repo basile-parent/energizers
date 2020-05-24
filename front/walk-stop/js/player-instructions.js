@@ -40,7 +40,7 @@ let INSTRUCTION_INPUT_PROPERTIES = {
 // ];
 
 const INSTRUCTION_DIV = document.getElementById("instruction");
-const COUNTDOWN_DIV = document.getElementById("countdown");
+const COUNTDOWN_DIV = document.getElementById("countdown-rules");
 INSTRUCTION_DIV.classList.add("instruction-animation__out");
 
 const showInstruction = (message, color) => {
@@ -58,6 +58,7 @@ const hideInstruction = () => {
 };
 
 const startGame = async (instructions) => {
+  INSTRUCTION_DIV.classList.add("hidden");
   COUNTDOWN_DIV.classList.remove("hidden");
 
   await showCount(3);
@@ -83,6 +84,25 @@ const showCount = async count => {
   });
 };
 
+const showEndOfTime = () => {
+  return new Promise(resolve => {
+    INSTRUCTION_DIV.classList.add("hidden");
+    COUNTDOWN_DIV.classList.remove("hidden");
+    COUNTDOWN_DIV.classList.add("countdownEnd");
+
+    COUNTDOWN_DIV.innerHTML = "Fin&nbsp;&nbsp;&nbsp;du&nbsp;&nbsp;&nbsp;temps !";
+    COUNTDOWN_DIV.classList.remove("instruction-animation__out");
+    COUNTDOWN_DIV.classList.add("instruction-animation__in");
+    setTimeout(() => {
+      hideCountdown();
+      setTimeout(() => {
+        COUNTDOWN_DIV.classList.remove("countdownEnd");
+        resolve();
+      }, 400);
+    }, 1500);
+  });
+};
+
 const hideCountdown = () => {
   COUNTDOWN_DIV.classList.add("instruction-animation__out");
   COUNTDOWN_DIV.classList.remove("instruction-animation__in");
@@ -92,12 +112,13 @@ const hideCountdown = () => {
 const runInstruction = (instructions, index) => {
   if (index >= instructions.length) {
     // Fin du jeu
-    console.log("Fin du jeu");
+    console.log("Fin des instructions");
     return;
   }
 
   CURRENT_INSTRUCTION = instructions[index];
   setTimeout(() => {
+      const now = new Date();
       showInstruction(CURRENT_INSTRUCTION.label, CURRENT_INSTRUCTION.color);
       CURRENT_INSTRUCTION.showed = true;
       CURRENT_INSTRUCTION.timer = new Date();
@@ -155,6 +176,7 @@ const endInstruction = points => {
 };
 
 const launchGame = async (rules, instructions, instructionProperties) => {
+  INSTRUCTION_DIV.innerHTML = "";
   INSTRUCTION_INPUT_PROPERTIES = {
     timeout: instructionProperties.timeout,
     maxPoints: instructionProperties.maxPoints,
@@ -166,6 +188,7 @@ const launchGame = async (rules, instructions, instructionProperties) => {
   updateLexique(rules);
   await showRules(rules);
   await startGame(instructions);
+  startCountdown();
 };
 
 const showRules = async rules => {

@@ -26,14 +26,14 @@ const generateSequence = () => {
   while (timer < parameters.duration) {
     const token = Math.round(Math.random() * rangeDiff);
     const randomTimeout = parameters.range.min + token;
-    const nextTimeout = timer + randomTimeout;
+    const nextTimer = timer + parameters.timeout + randomTimeout;
 
-    if ((nextTimeout + parameters.timeout) > parameters.duration) {
+    if (nextTimer > parameters.duration) {
       break;
     }
 
     const randomInstruction = SELECTED_INSTRUCTIONS[Math.floor(Math.random() * SELECTED_INSTRUCTIONS.length)];
-    timer += randomTimeout;
+    timer = nextTimer;
 
     generatedInstructions.push({
       code: randomInstruction.replacementCode || randomInstruction.code,

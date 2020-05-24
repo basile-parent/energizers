@@ -40,6 +40,7 @@ const validateName = name => {
 
 WS_CLIENT.on("launchGame", sequence => {
   console.log(sequence);
+  setupCountdown(sequence.parameters.duration);
   launchGame(sequence.rules, sequence.instructions, sequence.parameters);
 });
 
