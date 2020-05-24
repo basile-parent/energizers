@@ -17,7 +17,7 @@ mkdir -p $EXPORT_FOLDER
 rm -rf $EXPORT_FOLDER/*
 
 # Copy sources
-cp -r $WORKSPACE/$JENKINS_JOB_NAME/back/$APPLICATION_NAME $EXPORT_FOLDER
+cp -r $WORKSPACE/back/$APPLICATION_NAME $EXPORT_FOLDER
 # Delete build
 rm -rf $EXPORT_FOLDER/node_modules/
 
