@@ -1,16 +1,10 @@
-const UserType = {
-  PLAYER: "player",
-  ADMIN: "admin"
-};
-
 const MAX_RECONNECT_TIMEOUT = 5000;
 
 class WebsocketClient {
-  constructor(url, path, userType, connectionCallback) {
+  constructor(url, path, options = { onConnect: () => {}, onDisconnect: () => {}}) {
     this.socket = io(url, { path });
     this.isConnected = false;
-    this.userType = userType;
-    this.connectionCallback = connectionCallback;
+    this.options = options;
     this.reconnectionTimeout = 300;
 
     this._initReconnectingProcess();
@@ -22,16 +16,9 @@ class WebsocketClient {
       this.isConnected = true;
       console.log("Connecté");
 
-      if (this.userType === UserType.PLAYER) {
-        if (localStorage.getItem("name")) {
-          this.emit('setName', localStorage.getItem("name"));
-        }
-        if (localStorage.getItem("score")) {
-          this.emit('setPoints', localStorage.getItem("score"));
-        }
-      }
       this.reconnectionTimeout = 300;
-      this.connectionCallback && this.connectionCallback();
+      console.log(this.options.onConnect);
+      this.options && this.options.onConnect && this.options.onConnect();
     });
     this.socket.on('connect_error', () => {
       console.log("Erreur lors de la connexion. Tentative de reconnexion...");
@@ -40,6 +27,7 @@ class WebsocketClient {
     this.socket.on('disconnect', () => {
       console.log("Déconnecté. Tentative de reconnexion...");
       this.isConnected = false;
+      this.options && this.options.onDisconnect && this.options.onDisconnect();
       this._reconnect();
     });
   };

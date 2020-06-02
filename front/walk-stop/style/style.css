@@ -252,3 +252,15 @@ p {
     padding: 10px 20px;
     border: 4px solid white;
 }
+
+#disconnected {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 50px;
+    opacity: 0.5;
+}
+
+#disconnected img {
+    height: 100%;
+}

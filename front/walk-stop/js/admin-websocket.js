@@ -1,7 +1,9 @@
-const WS_CLIENT = new WebsocketClient(WEBSOCKET_URL, WEBSOCKET_PATH, UserType.ADMIN, () => {
+const onConnect = () => {
   WS_CLIENT.emit("getSequence", "");
   WS_CLIENT.emit("getParameters", "");
-});
+};
+
+const WS_CLIENT = new WebsocketClient(WEBSOCKET_URL, WEBSOCKET_PATH, { onConnect });
 
 WS_CLIENT.on('leaderboard', function(leaderboard) {
   updateLeaderBoard(leaderboard);
