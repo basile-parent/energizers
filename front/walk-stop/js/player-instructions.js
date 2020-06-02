@@ -148,7 +148,7 @@ const handleInput = input => {
     let points = INSTRUCTION_INPUT_PROPERTIES.maxPoints;
     if (diff > INSTRUCTION_INPUT_PROPERTIES.pointsDecreaseStartPoint) {
       diff -= INSTRUCTION_INPUT_PROPERTIES.pointsDecreaseStartPoint;
-      points -= Math.max(0, Math.round(diff * INSTRUCTION_INPUT_PROPERTIES.decreasePointByMillisecond));
+      points = Math.max(0, points - Math.round(diff * INSTRUCTION_INPUT_PROPERTIES.decreasePointByMillisecond));
     }
 
     console.log(`Success +${points} points`);

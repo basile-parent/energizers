@@ -4,7 +4,7 @@ const scorePoints = points => {
   const id = randomId();
   createScoreDiv(id, points);
 
-  SCORE = Math.max(0, SCORE + points);
+  SCORE = SCORE + Math.max(0, points);
   WS_CLIENT.emit("setPoints", SCORE);
   updateScore();
 
