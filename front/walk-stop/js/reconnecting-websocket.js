@@ -17,7 +17,6 @@ class WebsocketClient {
       console.log("Connecté");
 
       this.reconnectionTimeout = 300;
-      console.log(this.options.onConnect);
       this.options && this.options.onConnect && this.options.onConnect();
     });
     this.socket.on('connect_error', () => {

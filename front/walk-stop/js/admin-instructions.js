@@ -1,8 +1,8 @@
 const basicInstructions = [
-    { order: 1, code: "click", label: "Clic", color: "green", description: "Taper sur n'importe quelle lettre (minuscule ou majuscule).", selected: false },
-    { order: 2, code: "letter", label: "Lettre", color: "red", description: "Clic gauche de la souris.", selected: false },
-    { order: 3, code: "number", label: "Chiffre", color: "blue", description: "Taper sur la touche Espace du clavier.", selected: false },
-    { order: 4, code: "space", label: "Espace", color: "light-yellow", description: "Taper sur n'importe quel chiffre (pavé numérique ou touches à accents).", selected: false },
+    { order: 1, code: "click", label: "Clic", color: "green", description: "Clic gauche de la souris.", selected: false },
+    { order: 2, code: "letter", label: "Lettre", color: "red", description: "Taper sur n'importe quelle lettre (minuscule ou majuscule).", selected: false },
+    { order: 3, code: "number", label: "Chiffre", color: "blue", description: "Taper sur n'importe quel chiffre (pavé numérique ou touches à accents).", selected: false },
+    { order: 4, code: "space", label: "Espace", color: "light-yellow", description: "Taper sur la touche Espace du clavier.", selected: false },
     { order: 5, code: "nothing", label: "Rien", color: "pink", description: "Ne RIEN faire.", selected: false },
     { order: 6, code: "shake", label: "Secoue", color: "yellow", description: "Bouger la souris.", selected: false }
 ];

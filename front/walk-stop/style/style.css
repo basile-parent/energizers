@@ -201,6 +201,10 @@ p {
     animation: 4s linear color-randomize infinite;
 }
 
+#rules ul {
+    padding: 0 16px;
+}
+
 #rules ul li {
     display: inline-block;
     height: 150px;

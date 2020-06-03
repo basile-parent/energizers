@@ -1,17 +1,5 @@
 let CURRENT_SEQUENCE_INSTRUCTION = null;
 
-const rules = {
-  dialogTimeout: 1500,
-  randomColors: false,
-  allRules: [
-    {code: "letter", label: "Clic", color: "green", replacementLabel: "Lettre", replacementColor: "red", description: "Taper sur n'importe quelle lettre (minuscule ou majuscule)." },
-    {code: "click", label: "Lettre", color: "red", replacementLabel: "Clic", replacementColor: "green", description: "Clic gauche de la souris." },
-    {code: "space", label: "Chiffre", color: "blue", replacementLabel: "Espace", replacementColor: "light-yellow", description: "Taper sur la touche Espace du clavier." },
-    {code: "number", label: "Espace", color: "light-yellow", replacementLabel: "Chiffre", replacementColor: "blue", description: "Taper sur n'importe quel chiffre (pavé numérique ou touches à accents)." },
-    {code: "nothing", label: "Rien", color: "pink", description: "Ne RIEN faire." },
-    {code: "shake", label: "Secoue", color: "yellow", description: "Bouger la souris." }
-  ]};
-
 const generateSequence = () => {
   const selectedInstructions = SELECTED_INSTRUCTIONS;
   if (selectedInstructions.length < 2) {
@@ -64,6 +52,8 @@ const generateSequence = () => {
     instructions: generatedInstructions,
     rules
   };
+
+  console.log(CURRENT_SEQUENCE_INSTRUCTION);
   document.querySelector("#sequence-id span").innerHTML = CURRENT_SEQUENCE_INSTRUCTION.id;
   WS_CLIENT.emit("setSequence", CURRENT_SEQUENCE_INSTRUCTION);
   enableLaunchGame();
