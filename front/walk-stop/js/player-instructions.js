@@ -197,7 +197,7 @@ const showRules = async rules => {
       rules.allRules.map(r => `
           <li>
               <p class="rules-title">
-                <span class="lexique__${r.color}">${r.label}</span>
+                <span class="${ rules.randomColors ? "random-color" : "lexique__" + r.replacementColor }">${r.label}</span>
                 ${ r.replacementLabel ? ` 🡆 <span class="${ rules.randomColors ? "random-color" : "lexique__" + r.replacementColor }">${r.replacementLabel}</span>` : ""}
               </p>
               <p class="rules-description">
@@ -229,6 +229,3 @@ const updateLexique = rules => {
     rules.allRules.map(r => `<li><span class="lexique__${r.color}">${r.label}</span>${r.replacementLabel ? ` 🡆 <span class="lexique__${r.replacementColor}">${r.replacementLabel}</span>` : ""}</li>`)
       .join("");
 };
-
-// startGame();
-// newRules(rules);

@@ -8,6 +8,8 @@ const generateSequence = () => {
   }
 
   const parameters = getParameters();
+
+  const randomColors = document.getElementById("randomColors").checked;
   const generatedInstructions = [];
   let timer = 0;
   const rangeDiff = parameters.range.max - parameters.range.min;
@@ -26,14 +28,14 @@ const generateSequence = () => {
     generatedInstructions.push({
       code: randomInstruction.replacementCode || randomInstruction.code,
       label: randomInstruction.label,
-      color: randomInstruction.color,
+      color: randomColors ? getRandomColor() : randomInstruction.color,
       timeout: randomTimeout
     });
   }
 
   const rules = {
     dialogTimeout: parameters.rulesDuration,
-    randomColors: false,
+    randomColors,
     allRules: SELECTED_INSTRUCTIONS
       .sort((a, b) => a.order - b.order)
       .map(i => ({
@@ -59,6 +61,10 @@ const generateSequence = () => {
   enableLaunchGame();
 };
 
+const getRandomColor = () => {
+  return basicInstructions[Math.floor(Math.random() * basicInstructions.length)].color;
+};
+
 const deleteSequence = () => {
   WS_CLIENT.emit("deleteSequence", "");
   CURRENT_SEQUENCE_INSTRUCTION.rules.allRules.forEach(r => removeSelectedInstruction(r.code));
@@ -72,6 +78,9 @@ const setExistingSequence = sequence => {
   }
   CURRENT_SEQUENCE_INSTRUCTION = sequence;
 
+  if (CURRENT_SEQUENCE_INSTRUCTION.rules.randomColors) {
+    document.getElementById("randomColors").checked = true;
+  }
   CURRENT_SEQUENCE_INSTRUCTION.rules.allRules.forEach(r => selectInstruction(r.code));
   CURRENT_SEQUENCE_INSTRUCTION.rules.allRules.forEach(r => r.replacementCode && selectReplacement(r.code, r.replacementCode));
   document.querySelector("#sequence-id span").innerHTML = CURRENT_SEQUENCE_INSTRUCTION.id;
