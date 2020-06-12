@@ -1,0 +1,151 @@
+html, body {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: Georgia, Times, "Times New Roman", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#disconnected {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 50px;
+    opacity: 0.5;
+}
+
+#disconnected img {
+    height: 100%;
+}
+
+#full-screen {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    flex: none;
+    font-size: 50px;
+    height: 110px;
+    line-height: 80px;
+    text-align: center;
+    margin: 20px;
+}
+
+#code,
+#decode {
+    flex: 1;
+    font-size : 50px;
+    text-align: center;
+    padding : 0 250px;
+}
+
+#code .letter {
+    border-bottom: 2px solid white;
+    margin: 0 2px;
+}
+
+#decode {
+    color: yellow;
+}
+
+#decode .nowrap {
+    white-space: nowrap;
+}
+#decode input {
+    font-size: 28px;
+    width: 35px;
+    height: 45px;
+    text-align: center;
+    margin: 0 2px;
+    font-family: Georgia, Times, "Times New Roman", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", serif;
+    color: white;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid yellow;
+}
+
+/* **********************************************************
+************************    ADMIN    ************************
+************************************************************* */
+#admin main {
+    text-align: center;
+    display: flex;
+    width: 100%;
+    padding: 0 400px 0 100px;
+}
+#admin main article {
+    flex: 1;
+    padding: 0 40px;
+}
+#admin main label {
+    font-size: 30px;
+}
+#admin main textarea {
+    height: 100px;
+    width: 100%;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+#admin main input {
+    height: 35px;
+    width: 100%;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+#admin button {
+    margin : 10px;
+    padding: 10px 30px;
+    font-size: 25px;
+    border-radius: 3px;
+    border: 1px solid #3bc636;
+    background-color: #009c00;
+    color: white;
+    cursor: pointer;
+}
+
+#admin #leaderboard {
+    position: absolute;
+    top : 0;
+    right : 25px;
+    font-size: 30px;
+    text-align: right;
+}
+
+#admin footer {
+    position: absolute;
+    bottom : 25px;
+    right : 25px;
+    font-family: Arial, serif;
+}
+
+#admin ul#clues {
+    height: 400px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+#admin ul#clues li {
+    border: 1px solid white;
+    margin: 5px;
+}

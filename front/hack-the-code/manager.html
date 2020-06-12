@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <!--    <link rel="icon" href="resources/icon.png" />-->
+    <meta name="description" content="Agile energizer : Hack the code"/>
+    <title>Hack the code</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body id="admin">
+<section id="full-screen">
+    <h1>Interface admin : Hack the code</h1>
+
+    <main>
+        <article>
+            <div>
+                <label for="solution_input">Solution : </label>
+                <textarea id="solution_input">NE PRESUMEZ PAS QUE LE SEUL MOYEN DE GAGNER EST DE CONCOURIR, PARFOIS LE MEILLEUR MOYEN DE GAGNER EST DE COOPERER AVEC D'AUTRES.</textarea>
+            </div>
+            <div>
+                <label for="alphabet_input">Alphabet de substitution : </label>
+                <input type="text" id="alphabet_input" maxlength="26" value="AXCPIDJTKUEBLQVHOYFZMWGNSR" />
+            </div>
+            <button onClick="encode();">Encoder</button>
+        </article>
+        <article>
+            <div>
+                <label for="code_input">Code : </label>
+                <textarea id="code_input"></textarea>
+            </div>
+            <div>
+                <label>Indices : </label>
+                <ul id="clues"></ul>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <button id="send-code" onclick="">Envoyer le code</button>
+        <button id="send-clue" onclick="">Envoyer les indices</button>
+    </footer>
+
+    <aside id="leaderboard">
+        <p>Connectés :</p>
+        <ul></ul>
+    </aside>
+</section>
+
+<script src="js/constants.js"></script>
+<script src="js/socket.io.js"></script>
+<script src="js/reconnecting-websocket.js"></script>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -18,7 +18,11 @@ const server = http.createServer((req, res) => {
 const io = require('socket.io').listen(server);
 
 const walkStopWs = require("./walk-stop-ws");
-walkStopWs.initWebsocket(io);
+const hackCodeWs = require("./hack-the-code");
+io.sockets.on('connection', socket => {
+  walkStopWs.initWebsocketWalkStop(socket);
+  hackCodeWs.initWebsocketHack(socket);
+});
 
 const hostname = '127.0.0.1';
 const port = 3000;
