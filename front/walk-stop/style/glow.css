@@ -26,12 +26,12 @@
     100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--glow-blue), 0 0 70px var(--glow-blue), 0 0 80px var(--glow-blue), 0 0 100px var(--glow-blue), 0 0 150px var(--glow-blue); }
 }
 
-.lexique__blue { color : var(--glow-blue); }
-.lexique__pink { color : var(--glow-pink); }
-.lexique__red { color : var(--glow-red); }
-.lexique__yellow { color : var(--glow-yellow); }
-.lexique__light-yellow { color : var(--glow-light-yellow); }
-.lexique__green { color : var(--glow-green); }
+.lexique__blue { color : var(--glow-blue) !important; }
+.lexique__pink { color : var(--glow-pink) !important; }
+.lexique__red { color : var(--glow-red) !important; }
+.lexique__yellow { color : var(--glow-yellow) !important; }
+.lexique__light-yellow { color : var(--glow-light-yellow) !important; }
+.lexique__green { color : var(--glow-green) !important; }
 
 @keyframes color-randomize {
     0% { color: var(--glow-blue); }

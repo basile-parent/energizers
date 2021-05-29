@@ -13,11 +13,19 @@ const updateInstructionList = () => {
   document.querySelector("#instruction-list ul").innerHTML =
     basicInstructions
       .map(instruction => `
-      <li class="${ instruction.selected ? "selected" : "" }" onClick="selectInstruction('${ instruction.code }')">
+      <li class="${ instruction.selected ? "selected" : "toto" }" onClick="selectInstruction('${ instruction.code }')">
         <span class="lexique__${ instruction.color }">${ instruction.label }</span>
       </li>
       `)
       .join("")
+};
+
+const _getReplacementColor = instruction => {
+    if (!instruction.replacementCode) {
+        return null;
+    }
+    const replacement = basicInstructions.find(i => i.code === instruction.replacementCode);
+    return replacement?.color;
 };
 
 const updateSelectedInstructionList = () => {
@@ -29,7 +37,7 @@ const updateSelectedInstructionList = () => {
                 <span class="lexique__${ instruction.color }">${ instruction.label }</span>
                 <span class="${ !instruction.replacementCode ? "noReplacement" : "" }"> 🡆 </span>
                 <span class="${ !instruction.replacementCode ? "noReplacement" : "" }">
-                    <select onChange="selectReplacement('${ instruction.code }', this.value)">
+                    <select onChange="selectReplacement('${ instruction.code }', this.value);" class="lexique__${ _getReplacementColor(instruction) }">
                         <option value="">--</option>
                         ${ SELECTED_INSTRUCTIONS
                             .filter(i => i.code !== instruction.code && (!i.replacementCode || i.replacementCode === instruction.code))
@@ -61,8 +69,10 @@ const selectInstruction = code => {
     if (SELECTED_INSTRUCTIONS.find(i => i.code === code)) {
         return;
     }
-    const instruction = {... basicInstructions.find(i => i.code === code)};
+    const instruction = basicInstructions.find(i => i.code === code);
     instruction.selected = true;
+    console.log(instruction);
+    console.log(basicInstructions);
     SELECTED_INSTRUCTIONS.push(instruction);
 
     updateInstructionList();

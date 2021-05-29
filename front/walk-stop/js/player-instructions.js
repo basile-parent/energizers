@@ -197,7 +197,7 @@ const showRules = async rules => {
       rules.allRules.map(r => `
           <li>
               <p class="rules-title">
-                <span class="${ rules.randomColors ? "random-color" : "lexique__" + r.replacementColor }">${r.label}</span>
+                <span class="${ rules.randomColors ? "random-color" : "lexique__" + r.color }">${r.label}</span>
                 ${ r.replacementLabel ? ` 🡆 <span class="${ rules.randomColors ? "random-color" : "lexique__" + r.replacementColor }">${r.replacementLabel}</span>` : ""}
               </p>
               <p class="rules-description">

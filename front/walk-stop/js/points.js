@@ -46,7 +46,7 @@ const updateLeaderBoard = leaderboard => {
   const myName = localStorage.getItem("name");
   document.querySelector("#leaderboard ul").innerHTML =
     leaderboard.map(player => `
-          <li ${ player.name === myName ? "class='change-name' onClick='showNamePopup()'" : "" }>
+          <li ${ player.name === myName ? "class='change-name current-player' onClick='showNamePopup()'" : "" }>
             ${ player.name } &nbsp;&nbsp;&nbsp;&nbsp;${ getHTMLScore(player.score) }
           </li>`).join("");
 };

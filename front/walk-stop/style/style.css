@@ -83,6 +83,11 @@ p {
 
     font-size: 150px;
     font-weight: bold;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .instruction-animation__in {
@@ -125,8 +130,14 @@ p {
     font-family: arcade, neon, serif;
     text-align: right;
 }
-#leaderboard ul li:first-of-type { color: #feff86; }
+#leaderboard ul li.current-player { color: #feff86; }
 #leaderboard ul li.change-name { cursor: pointer; }
+#leaderboard ul li.change-name::before {
+    content: "✎ ";
+    font-size: 20px;
+    margin-right: 8px;
+    vertical-align: text-top;
+}
 
 #lexique {
     position: absolute;
